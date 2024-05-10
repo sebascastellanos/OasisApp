@@ -12,7 +12,7 @@ export default function StartScreen({ navigation }:any) {
       <View style={styles.buttonContainer}>
         <Button
           title="Let's Start"
-          onPress={() => navigation.navigate('SignUp')}
+          onPress={() => navigation.navigate('Login')}
           color="#FF6347"  // Tomato color for the button, feel free to customize
         />
       </View>
