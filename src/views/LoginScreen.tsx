@@ -1,10 +1,31 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Button, Text } from 'react-native';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
-export default function LoginScreen() {
+// Configuración de Google Sign-In (Deberías configurar el webClientId aquí)
+GoogleSignin.configure({
+  webClientId: '429308432569-26dmpbiefrejae5k8hcpp29ir27sn0sc.apps.googleusercontent.com', // Reemplaza con tu web client ID de la consola de Google
+});
+
+const LoginScreen = () => {
+  const signInWithGoogle = async () => {
+    try {
+      const { idToken } = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      const userCredential = await auth().signInWithCredential(googleCredential);
+      console.log('Usuario logueado con Google:', userCredential.user);
+    } catch (error) {
+      console.error('Error al iniciar sesión con Google:', error);
+    }
+  };
+
   return (
-    <View>
-      <Text>LoginScreen</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={{ fontSize: 24, marginBottom: 20 }}>Bienvenido</Text>
+      <Button title="Iniciar sesión con Google" onPress={signInWithGoogle} />
     </View>
-  )
-}
+  );
+};
+
+export default LoginScreen;
