@@ -1,4 +1,4 @@
-package com.oasis
+package com.isase.oasis
 
 import android.app.Application
 import com.facebook.react.PackageList

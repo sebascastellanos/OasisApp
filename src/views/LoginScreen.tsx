@@ -5,7 +5,7 @@ import auth from '@react-native-firebase/auth';
 
 // Configuración de Google Sign-In (Deberías configurar el webClientId aquí)
 GoogleSignin.configure({
-  webClientId: '429308432569-26dmpbiefrejae5k8hcpp29ir27sn0sc.apps.googleusercontent.com', // Reemplaza con tu web client ID de la consola de Google
+  webClientId: '429308432569-ig8hn6c052t21cvn0qcocd3dv5lmlu0s.apps.googleusercontent.com', // Reemplaza con tu web client ID de la consola de Google
 });
 
 const LoginScreen = () => {
@@ -14,7 +14,7 @@ const LoginScreen = () => {
       const { idToken } = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       const userCredential = await auth().signInWithCredential(googleCredential);
-      console.log('Usuario logueado con Google:', userCredential.user);
+      console.log('Usuario logueado con Google:', userCredential);
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error);
     }

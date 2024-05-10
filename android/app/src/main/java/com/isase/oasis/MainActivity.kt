@@ -1,4 +1,4 @@
-package com.oasis
+package com.isase.oasis
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
