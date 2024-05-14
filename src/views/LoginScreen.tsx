@@ -3,18 +3,21 @@ import { View, Button, Text } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
-// Configuración de Google Sign-In (Deberías configurar el webClientId aquí)
+// Configuración de Google Sign-In
 GoogleSignin.configure({
-  webClientId: '429308432569-ig8hn6c052t21cvn0qcocd3dv5lmlu0s.apps.googleusercontent.com', // Reemplaza con tu web client ID de la consola de Google
-});
+  webClientId: '429308432569-ig8hn6c052t21cvn0qcocd3dv5lmlu0s.apps.googleusercontent.com',
+}); 
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }:any) => { // Aquí se recibe navigation como parámetro
   const signInWithGoogle = async () => {
     try {
       const { idToken } = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       const userCredential = await auth().signInWithCredential(googleCredential);
       console.log('Usuario logueado con Google:', userCredential);
+
+      // Navega a la pantalla Home
+      navigation.navigate('Home');
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error);
     }
