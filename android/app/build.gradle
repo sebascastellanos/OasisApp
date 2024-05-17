@@ -109,7 +109,8 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
-    
+    implementation project(':react-native-maps')
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
