@@ -25,11 +25,6 @@ class ScanScreen extends Component {
       <QRCodeScanner
         onRead={this.onSuccess}
         flashMode={RNCamera.Constants.FlashMode.torch}
-        bottomContent={
-          <TouchableOpacity style={styles.buttonTouchable}>
-            <Text style={styles.buttonText}>OK. Got it!</Text>
-          </TouchableOpacity>
-        }
       />
     );
   }
@@ -46,13 +41,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#000'
   },
-  buttonText: {
-    fontSize: 21,
-    color: 'rgb(0,122,255)'
-  },
-  buttonTouchable: {
-    padding: 16
-  }
 });
 
 export default ScanScreen;

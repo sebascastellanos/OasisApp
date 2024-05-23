@@ -1,19 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { NavigationProp } from '@react-navigation/native';
+import BottomTabNavigator from '../components/BottomTabNavigator';
 
-type RootStackParamList = {
-  Home: undefined;
-  Map: undefined;
-};
-
-type HomeScreenNavigationProp = NavigationProp<RootStackParamList, 'Home'>;
-
-type HomeScreenProps = {
-  navigation: HomeScreenNavigationProp;
-};
-
-const HomeScreen = ({ navigation }: HomeScreenProps) => {
+const HomeScreen = ({ navigation }: any) => {
   const themes = [
     {
       id: 1,
@@ -58,12 +47,8 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      <TouchableOpacity style={styles.mapButton} onPress={() => navigation.navigate('Map')}>
-        <Text style={styles.mapButtonText}>View on Map</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.mapButton} onPress={() => navigation.navigate('Scanner')}>
-        <Text style={styles.mapButtonText}>QRCodeScanner</Text>
-      </TouchableOpacity>
+      {/* Llama a BottomTabNavigator aquí */}
+      <BottomTabNavigator navigation={navigation} />
     </View>
   );
 };
@@ -76,7 +61,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 20,
+    paddingTop: 30,
     paddingHorizontal: 20,
     paddingBottom: 20,
   },
@@ -129,19 +114,6 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
-  },
-  mapButton: {
-    backgroundColor: '#4CAF50',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-    marginHorizontal: 20,
-    marginVertical: 10,
-  },
-  mapButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
   },
 });
 
