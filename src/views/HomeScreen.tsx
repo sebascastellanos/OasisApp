@@ -61,6 +61,9 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
       <TouchableOpacity style={styles.mapButton} onPress={() => navigation.navigate('Map')}>
         <Text style={styles.mapButtonText}>View on Map</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.mapButton} onPress={() => navigation.navigate('Scanner')}>
+        <Text style={styles.mapButtonText}>QRCodeScanner</Text>
+      </TouchableOpacity>
     </View>
   );
 };
