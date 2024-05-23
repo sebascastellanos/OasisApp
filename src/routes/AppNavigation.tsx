@@ -8,7 +8,7 @@ import SignUpScreen from "../views/SignUpScreen";
 import StartScreen from "../views/StartScreen";
 import HomeScreen from "../views/HomeScreen";
 import MapScreen from "../views/MapScreen";
-import ScanScreen from "../views/ScannerScreen";
+import ScannerScreen from "../views/ScannerScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -22,7 +22,7 @@ export default function AppNavigation() {
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="Map" component={MapScreen} />
-        <Stack.Screen name="Scanner" component={ScanScreen} />
+        <Stack.Screen name="Scanner" component={ScannerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
