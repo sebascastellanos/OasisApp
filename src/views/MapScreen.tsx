@@ -1,8 +1,9 @@
-import { View, StyleSheet } from 'react-native';
 import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import BottomTabNavigator from '../components/BottomTabNavigator';
 
-export default function MapScreen() {
+export default function MapScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <MapView style={styles.map}>
@@ -15,6 +16,8 @@ export default function MapScreen() {
           description="Descripción del marcador"
         />
       </MapView>
+      {/* Agrega BottomTabNavigator aquí */}
+      <BottomTabNavigator navigation={navigation} />
     </View>
   );
 }
