@@ -30,6 +30,13 @@ const BottomTabNavigator: React.FC<BottomTabNavigatorProps> = ({ navigation }) =
         <Ionicons name="map-outline" size={24} color="white" />
         <Text style={styles.tabText}>Map</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.tabItem}
+        onPress={() => navigation.navigate('Chat')}
+      >
+        <Ionicons name="chatbubbles-outline" size={24} color="white" />
+        <Text style={styles.tabText}>Chatbot</Text>
+      </TouchableOpacity>
     </View>
   );
 };
