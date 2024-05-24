@@ -1,20 +1,24 @@
-import { View, Text, StyleSheet, Button } from 'react-native';
 import React from 'react';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 
-export default function StartScreen({ navigation }:any) {
+export default function StartScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Welcome</Text>
-        <Text style={styles.title}>To</Text>
-        <Text style={styles.title}>Oasis</Text>
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Let's Start"
+      <ImageBackground
+        source={require('../assets/oasisfondo.jpg')} // Ruta de tu imagen de fondo
+        style={styles.backgroundImage}
+      >
+      </ImageBackground>
+      <View style={styles.bottomContainer}>
+      <View style={styles.overlay}>
+          <Text style={styles.title}>Oasis</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.buttonContainer}
           onPress={() => navigation.navigate('Login')}
-          color="#FF6347"  // Tomato color for the button, feel free to customize
-        />
+        >
+          <Text style={styles.buttonText}>Comenzar</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -23,23 +27,37 @@ export default function StartScreen({ navigation }:any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#C9E7E5',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  backgroundImage: {
+    flex: 0.7, 
+    resizeMode: 'cover',
+    justifyContent: 'flex-end', 
+  },
+  overlay: {
+    backgroundColor: 'rgba(0,0,0,0.0)', 
     padding: 20,
   },
-  titleContainer: {
-    alignItems: 'center',  // Centers text horizontally
-    marginBottom: 20,
-  },
   title: {
-    fontSize: 70  ,
+    fontSize: 70,
     fontFamily: 'Pacifico',
-    color: '#306B34'  // A playful green color
+    color: '#fff',
+  },
+  bottomContainer: {
+    flex: 0.3, 
+    backgroundColor: '#9e8d67',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonContainer: {
-    width: '90%',
+    backgroundColor: '#4CAF50',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
     borderRadius: 20,
-    overflow: 'hidden',
-  }
+    marginBottom: 40
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
 });
