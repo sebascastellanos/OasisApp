@@ -56,7 +56,7 @@ const HomeScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e8f0fe',
+    backgroundColor: '#9e8d67',
   },
   headerContainer: {
     flexDirection: 'row',
@@ -77,13 +77,13 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
     lineHeight: 40,
   },
   destinationText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#ffff',
     marginHorizontal: 20,
     marginBottom: 10,
   },
