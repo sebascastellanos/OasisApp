@@ -5,6 +5,7 @@ import { NavigationProp } from '@react-navigation/native';
 type RootStackParamList = {
   Home: undefined;
   Map: undefined;
+  Travel: { theme: string }; // Añadir la pantalla Travel con el parámetro theme
 };
 
 type HomeScreenNavigationProp = NavigationProp<RootStackParamList, 'Home'>;
@@ -30,7 +31,6 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
       name: 'Sabana',
       imageSource: require('../assets/sabana.jpg'),
     },
-    // Agrega más temas aquí si lo deseas
   ];
 
   return (
@@ -52,7 +52,11 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
         contentContainerStyle={styles.themesContainer}
       >
         {themes.map((theme) => (
-          <TouchableOpacity key={theme.id} style={styles.themeCard}>
+          <TouchableOpacity
+            key={theme.id}
+            style={styles.themeCard}
+            onPress={() => navigation.navigate('Travel', { theme: theme.name })}
+          >
             <Image source={theme.imageSource} style={styles.themeImage} />
             <Text style={styles.themeText}>{theme.name}</Text>
           </TouchableOpacity>
