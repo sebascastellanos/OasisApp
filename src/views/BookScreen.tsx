@@ -1,6 +1,7 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Image, TouchableOpacity, Alert, TextInput } from 'react-native';
 import { NavigationProp, RouteProp } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackParamList } from './TravelScreen'; // Asumiendo que tienes definido el tipo RootStackParamList en un archivo types.tsx
 import BottomTabNavigator from '../components/BottomTabNavigator';
 
@@ -11,6 +12,30 @@ type BookScreenProps = {
 
 const BookScreen: React.FC<BookScreenProps> = ({ navigation, route }) => {
   const { destinationName, color, destinationImage } = route.params;
+  const [selectedDate, setSelectedDate] = useState<string>('');
+
+  const handleBooking = async () => {
+    if (!selectedDate) {
+      Alert.alert("Error", "Seleccione una fecha y hora");
+      return;
+    }
+
+    const reservation = {
+      destinationName,
+      selectedDate,
+    };
+
+    try {
+      const existingReservations = await AsyncStorage.getItem('reservations');
+      const reservations = existingReservations ? JSON.parse(existingReservations) : [];
+      reservations.push(reservation);
+      await AsyncStorage.setItem('reservations', JSON.stringify(reservations));
+      Alert.alert("Éxito", "Reserva guardada exitosamente");
+      navigation.goBack();
+    } catch (error) {
+      Alert.alert("Error", "Hubo un problema al guardar la reserva");
+    }
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: '#C9E7E5' }]}>
@@ -19,12 +44,15 @@ const BookScreen: React.FC<BookScreenProps> = ({ navigation, route }) => {
         <Text style={styles.title}>Reservar en {destinationName}</Text>
       </View>
       <View style={styles.body}>
-        <Text style={styles.description}>Seleccione una fecha y hora para su reserva:</Text>
-        <View style={styles.datePickerContainer}>
-          {/* Aquí iría el componente de selección de fecha y hora */}
-          <Text style={styles.placeholderText}>Seleccione la fecha y hora</Text>
-        </View>
-        <TouchableOpacity style={styles.bookButton} onPress={() => {}}>
+        <Text style={styles.description}>Ingrese una fecha y hora para su reserva:</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="YYYY-MM-DD HH:MM"
+          placeholderTextColor="#ccc"
+          value={selectedDate}
+          onChangeText={setSelectedDate}
+        />
+        <TouchableOpacity style={styles.bookButton} onPress={handleBooking}>
           <Text style={styles.bookButtonText}>Reservar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.goBack()}>
@@ -71,7 +99,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'black',
   },
-  datePickerContainer: {
+  textInput: {
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
