@@ -38,9 +38,7 @@ const BookScreen: React.FC<BookScreenProps> = ({ navigation, route }) => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: color }]}>
-      <Image source={require('../assets/book.jpg')} style={styles.backgroundImage} />
-
+    <View style={[styles.container, { backgroundColor: '#C9E7E5' }]}>
       <View style={styles.header}>
         <Image source={destinationImage} style={styles.destinationImage} />
         <Text style={styles.title}>Reservar en {destinationName}</Text>
@@ -70,14 +68,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-  },
   header: {
     alignItems: 'center',
     paddingTop: 20,
@@ -87,7 +77,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 20,
-    color: '#fff',
+    color: 'black',
   },
   destinationImage: {
     width: 400,
@@ -107,7 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 20,
     textAlign: 'center',
-    color: '#fff',
+    color: 'black',
   },
   textInput: {
     borderWidth: 1,
@@ -116,8 +106,11 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     width: '100%',
-    color: '#fff',
-    
+    alignItems: 'center',
+  },
+  placeholderText: {
+    fontSize: 16,
+    color: 'black',
   },
   bookButton: {
     backgroundColor: '#4CAF50',
