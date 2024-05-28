@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { NavigationProp, RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from './TravelScreen'; // Asumiendo que tienes definido el tipo RootStackParamList en un archivo types.tsx
 import BottomTabNavigator from '../components/BottomTabNavigator';
@@ -13,7 +13,7 @@ const BookScreen: React.FC<BookScreenProps> = ({ navigation, route }) => {
   const { destinationName, color, destinationImage } = route.params;
 
   return (
-    <View style={[styles.container, { backgroundColor: '#C9E7E5' }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: '#C9E7E5' }]}>
       <View style={styles.header}>
         <Image source={destinationImage} style={styles.destinationImage} />
         <Text style={styles.title}>Reservar en {destinationName}</Text>
@@ -32,7 +32,7 @@ const BookScreen: React.FC<BookScreenProps> = ({ navigation, route }) => {
         </TouchableOpacity>
       </View>
       <BottomTabNavigator navigation={navigation} />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    paddingTop: 20,
+    paddingTop: 0,
+    marginTop: 0,
   },
   title: {
     fontSize: 24,
@@ -52,10 +53,11 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   destinationImage: {
-    width: 400,
+    width: '100%',
     height: 300,
     resizeMode: 'cover',
-    borderRadius: 10,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20
   },
   body: {
     flex: 1,
