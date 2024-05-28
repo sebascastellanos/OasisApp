@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';  // Importar módulo de autenticación de Firebase
 
-export default function SignUpScreen({ navigation }:any) {
+export default function SignUpScreen({ navigation }: any) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -53,7 +53,7 @@ export default function SignUpScreen({ navigation }:any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#C9E7E5',
+    backgroundColor: '#C9E7E5',  // Color de fondo actualizado
     alignItems: 'center',
     justifyContent: 'center',
     padding: 50,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#007AFF',
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 20,  // Aumentar el borderRadius para redondear más
     alignItems: 'center',
     width: '100%',
     marginTop: 10,
