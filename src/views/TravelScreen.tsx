@@ -3,10 +3,12 @@ import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity, ImageSourc
 import { NavigationProp, RouteProp } from '@react-navigation/native';
 import BottomTabNavigator from '../components/BottomTabNavigator'; // Importa el BottomTabNavigator
 
-type RootStackParamList = {
+
+export type RootStackParamList = {
   Home: undefined;
-  Travel: { theme: string; destinations: { name: string; image: ImageSourcePropType }[] };
-  Book: { destinationName: string }; // Define la ruta para BookScreen
+  Travel: { theme: string; destinations: { name: string; image: ImageSourcePropType; color: string  }[] };
+  Book: { destinationName: string; color: string; destinationImage: ImageSourcePropType };
+
 };
 
 type TravelScreenProps = {
@@ -42,12 +44,12 @@ const TravelScreen = ({ navigation, route }: TravelScreenProps) => {
       backgroundColor = '#9e8d67';
   }
 
-  const handleDestinationPress = (destinationName: string) => {
-    navigation.navigate('Book', { destinationName }); // Navega a BookScreen con el nombre del destino
+  const navigateToBook = (destinationName: string, color: string, destinationImage: ImageSourcePropType) => {
+    navigation.navigate('Book', { destinationName, color, destinationImage });
   };
 
   return (
-    <View style={[styles.container, { backgroundColor }]}>
+    <View style={[styles.container, { backgroundColor}]}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Image source={headerImages[theme]} style={styles.headerImage} />
         <Text style={styles.title}>{theme} Biome</Text>
@@ -59,14 +61,14 @@ const TravelScreen = ({ navigation, route }: TravelScreenProps) => {
         </Text>
         <View style={styles.destinationsContainer}>
           {destinations.map((destination, index) => (
-            <TouchableOpacity key={index} style={styles.destinationButton} onPress={() => handleDestinationPress(destination.name)}>
+            <TouchableOpacity key={index} style={styles.destinationButton} onPress={() => navigateToBook(destination.name, destination.color, destination.image)}>
               <Image source={destination.image} style={styles.destinationImage} />
               <Text style={styles.destinationName}>{destination.name}</Text>
             </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
-      
+      {/* Agrega el BottomTabNavigator al final de la vista */}
       <BottomTabNavigator navigation={navigation} />
     </View>
   );
