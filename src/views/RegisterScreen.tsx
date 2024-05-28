@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Text, TextInput, TouchableOpacity, StyleSheet, Image, ImageBackground } from 'react-native';
+import { View, Button, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 const RegisterScreen = ({ navigation }: any) => {
@@ -20,8 +20,7 @@ const RegisterScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
-        <Image source={require('../assets/login.jpg')} style={styles.backgroundImage} />
-      <Text style={styles.title}>Registro</Text>
+      <Text style={styles.title}>Sign up now</Text>
       <View style={styles.form}>
         <TextInput
           placeholder="Correo electrónico"
@@ -37,7 +36,7 @@ const RegisterScreen = ({ navigation }: any) => {
           style={styles.input}
         />
         <TouchableOpacity style={styles.registerButton} onPress={registerWithEmailAndPassword}>
-          <Text style={styles.buttonText}>Registrarse</Text>
+          <Text style={styles.buttonText}>Sign up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -49,19 +48,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  backgroundImage : {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
+    backgroundColor: '#C9E7E5',  // Color de fondo actualizado
   },
   title: {
     fontSize: 24,
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
     marginBottom: 20,
   },

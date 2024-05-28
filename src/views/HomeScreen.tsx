@@ -1,4 +1,3 @@
-// HomeScreen.js
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { NavigationProp } from '@react-navigation/native';
@@ -62,7 +61,6 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/home.jpg')} style={styles.backgroundImage} />
       <View style={styles.headerContainer}>
         <Image source={require('../assets/profilepic.jpg')} style={styles.profileImage} />
         <View style={styles.titleContainer}>
@@ -99,15 +97,7 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#9e8d67',
-  },
-  backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
+    backgroundColor: '#C9E7E5',  // Color de fondo actualizado
   },
   headerContainer: {
     flexDirection: 'row',
@@ -128,13 +118,13 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#333',  // Cambiado a un color más oscuro para contraste
     lineHeight: 40,
   },
   destinationText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#ffff',
+    color: '#333',  // Cambiado a un color más oscuro para contraste
     marginHorizontal: 20,
     marginBottom: 10,
   },
