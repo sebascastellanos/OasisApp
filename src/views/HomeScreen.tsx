@@ -62,6 +62,7 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
 
   return (
     <View style={styles.container}>
+      <Image source={require('../assets/home.jpg')} style={styles.backgroundImage} />
       <View style={styles.headerContainer}>
         <Image source={require('../assets/profilepic.jpg')} style={styles.profileImage} />
         <View style={styles.titleContainer}>
@@ -99,6 +100,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#9e8d67',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
   headerContainer: {
     flexDirection: 'row',
