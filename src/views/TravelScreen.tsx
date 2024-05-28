@@ -12,6 +12,7 @@ type TravelScreenProps = {
   route: RouteProp<RootStackParamList, 'Travel'>;
 };
 
+
 const headerImages: { [key: string]: ImageSourcePropType } = {
   'Tropical Jungle': require('../assets/jungles.jpg'),
   Desert: require('../assets/desert.jpg'),
