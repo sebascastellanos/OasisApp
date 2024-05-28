@@ -21,9 +21,9 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
       name: 'Tropical Jungle',
       imageSource: require('../assets/jungles.jpg'),
       destinations: [
-        { name: 'MANAOS', image: require('../assets/manaos.jpg') },
-        { name: 'MALI', image: require('../assets/mali.jpg') },
-        { name: 'LETICIA', image: require('../assets/leticia.jpg') },
+        { name: 'Manaos', image: require('../assets/manaos.jpg') },
+        { name: 'Mali', image: require('../assets/mali.jpg') },
+        { name: 'Leticia', image: require('../assets/leticia.jpg') },
       ],
     },
     {

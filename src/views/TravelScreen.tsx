@@ -27,19 +27,19 @@ const TravelScreen = ({ navigation, route }: TravelScreenProps) => {
 
   switch (theme) {
     case 'Tropical Jungle':
-      backgroundColor = '#B5EAD7'; // Pastel verde
+      backgroundColor = '#DEFEDE';
       break;
     case 'Desert':
-      backgroundColor = '#F8D5C4'; // Pastel arena
+      backgroundColor = '#FEF9DE';
       break;
     case 'Sabana':
-      backgroundColor = '#FFF1A8'; // Pastel dorado
+      backgroundColor = '#FFF1A8'; 
       break;
     case 'Artic':
-      backgroundColor = '#D6EFFF'; // Pastel azul
+      backgroundColor = '#D6EFFF';
       break;
     default:
-      backgroundColor = '#EDE7F6'; // Color de respaldo
+      backgroundColor = '#EDE7F6'; 
   }
 
   const navigateToBook = (destinationName: string, color: string, destinationImage: ImageSourcePropType) => {
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 10,
-    color: '#4E4E4E', // Gris oscuro pastel
+    color: '#4E4E4E', 
     textAlign: 'center',
   },
   description: {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginHorizontal: 20,
     marginBottom: 20,
-    color: '#757575', // Gris pastel
+    color: '#757575', 
   },
   destinationsContainer: {
     flexDirection: 'row',
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   destinationButton: {
     margin: 10,
     alignItems: 'center',
-    backgroundColor: '#FFFFFF', // Blanco
+    backgroundColor: '#FFFFFF', 
     borderRadius: 10,
     overflow: 'hidden',
     elevation: 3,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333333', // Gris oscuro
+    color: '#333333', 
     textAlign: 'center',
     padding: 5,
   },
