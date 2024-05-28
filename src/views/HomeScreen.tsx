@@ -1,11 +1,12 @@
+// HomeScreen.js
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { NavigationProp } from '@react-navigation/native';
+import BottomTabNavigator from '../components/BottomTabNavigator';
 
 type RootStackParamList = {
   Home: undefined;
-  Map: undefined;
-  Travel: { theme: string }; // Añadir la pantalla Travel con el parámetro theme
+  Travel: { theme: string; destinations: { name: string; image: any }[] };
 };
 
 type HomeScreenNavigationProp = NavigationProp<RootStackParamList, 'Home'>;
@@ -20,17 +21,43 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
       id: 1,
       name: 'Tropical Jungle',
       imageSource: require('../assets/jungles.jpg'),
+      destinations: [
+        { name: 'MANAOS', image: require('../assets/manaos.jpg') },
+        { name: 'MALI', image: require('../assets/mali.jpg') },
+        { name: 'LETICIA', image: require('../assets/leticia.jpg') },
+      ],
     },
     {
       id: 2,
       name: 'Desert',
       imageSource: require('../assets/desert.jpg'),
+      destinations: [
+        { name: 'Dubai', image: require('../assets/dubai.jpg') },
+        { name: 'Cairo', image: require('../assets/cairo.jpg') },
+        { name: 'uyuni', image: require('../assets/uyuni.jpg') },
+      ],
     },
     {
       id: 3,
+      name: 'Artic',
+      imageSource: require('../assets/artic.jpg'),
+      destinations: [
+        { name: 'Dubai', image: require('../assets/dubai.jpg') },
+        { name: 'Cairo', image: require('../assets/cairo.jpg') },
+        { name: 'uyuni', image: require('../assets/uyuni.jpg') },
+      ],
+    },
+    {
+      id: 4,
       name: 'Sabana',
       imageSource: require('../assets/sabana.jpg'),
+      destinations: [
+        { name: 'Dubai', image: require('../assets/dubai.jpg') },
+        { name: 'Cairo', image: require('../assets/cairo.jpg') },
+        { name: 'uyuni', image: require('../assets/uyuni.jpg') },
+      ],
     },
+    // Agrega los destinos para las otras opciones de tema
   ];
 
   return (
@@ -55,16 +82,15 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
           <TouchableOpacity
             key={theme.id}
             style={styles.themeCard}
-            onPress={() => navigation.navigate('Travel', { theme: theme.name })}
+            onPress={() => navigation.navigate('Travel', { theme: theme.name, destinations: theme.destinations })}
           >
             <Image source={theme.imageSource} style={styles.themeImage} />
             <Text style={styles.themeText}>{theme.name}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
-      <TouchableOpacity style={styles.mapButton} onPress={() => navigation.navigate('Map')}>
-        <Text style={styles.mapButtonText}>View on Map</Text>
-      </TouchableOpacity>
+      {/* Llama a BottomTabNavigator aquí */}
+      <BottomTabNavigator navigation={navigation} />
     </View>
   );
 };
@@ -72,12 +98,12 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e8f0fe',
+    backgroundColor: '#9e8d67',
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 20,
+    paddingTop: 30,
     paddingHorizontal: 20,
     paddingBottom: 20,
   },
@@ -93,13 +119,13 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
     lineHeight: 40,
   },
   destinationText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#ffff',
     marginHorizontal: 20,
     marginBottom: 10,
   },
@@ -130,19 +156,6 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
-  },
-  mapButton: {
-    backgroundColor: '#4CAF50',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-    marginHorizontal: 20,
-    marginVertical: 10,
-  },
-  mapButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
   },
 });
 
