@@ -10,6 +10,7 @@ import HomeScreen from "../views/HomeScreen";
 import MapScreen from "../views/MapScreen";
 import ScannerScreen from "../views/ScannerScreen";
 import Chatbot from "../IAapi/Chatbot";
+import TravelScreen from "../views/TravelScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -25,6 +26,7 @@ export default function AppNavigation() {
         <Stack.Screen name="Map" component={MapScreen} />
         <Stack.Screen name="Scanner" component={ScannerScreen} />
         <Stack.Screen name="Chat" component={Chatbot} />
+        <Stack.Screen name="Travel" component={TravelScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

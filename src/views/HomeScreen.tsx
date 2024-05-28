@@ -1,25 +1,63 @@
+// HomeScreen.js
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { NavigationProp } from '@react-navigation/native';
 import BottomTabNavigator from '../components/BottomTabNavigator';
 
-const HomeScreen = ({ navigation }: any) => {
+type RootStackParamList = {
+  Home: undefined;
+  Travel: { theme: string; destinations: { name: string; image: any }[] };
+};
+
+type HomeScreenNavigationProp = NavigationProp<RootStackParamList, 'Home'>;
+
+type HomeScreenProps = {
+  navigation: HomeScreenNavigationProp;
+};
+
+const HomeScreen = ({ navigation }: HomeScreenProps) => {
   const themes = [
     {
       id: 1,
       name: 'Tropical Jungle',
       imageSource: require('../assets/jungles.jpg'),
+      destinations: [
+        { name: 'MANAOS', image: require('../assets/manaos.jpg') },
+        { name: 'MALI', image: require('../assets/mali.jpg') },
+        { name: 'LETICIA', image: require('../assets/leticia.jpg') },
+      ],
     },
     {
       id: 2,
       name: 'Desert',
       imageSource: require('../assets/desert.jpg'),
+      destinations: [
+        { name: 'Dubai', image: require('../assets/dubai.jpg') },
+        { name: 'Cairo', image: require('../assets/cairo.jpg') },
+        { name: 'uyuni', image: require('../assets/uyuni.jpg') },
+      ],
     },
     {
       id: 3,
+      name: 'Artic',
+      imageSource: require('../assets/artic.jpg'),
+      destinations: [
+        { name: 'Dubai', image: require('../assets/dubai.jpg') },
+        { name: 'Cairo', image: require('../assets/cairo.jpg') },
+        { name: 'uyuni', image: require('../assets/uyuni.jpg') },
+      ],
+    },
+    {
+      id: 4,
       name: 'Sabana',
       imageSource: require('../assets/sabana.jpg'),
+      destinations: [
+        { name: 'Dubai', image: require('../assets/dubai.jpg') },
+        { name: 'Cairo', image: require('../assets/cairo.jpg') },
+        { name: 'uyuni', image: require('../assets/uyuni.jpg') },
+      ],
     },
-    // Agrega más temas aquí si lo deseas
+    // Agrega los destinos para las otras opciones de tema
   ];
 
   return (
@@ -41,7 +79,11 @@ const HomeScreen = ({ navigation }: any) => {
         contentContainerStyle={styles.themesContainer}
       >
         {themes.map((theme) => (
-          <TouchableOpacity key={theme.id} style={styles.themeCard}>
+          <TouchableOpacity
+            key={theme.id}
+            style={styles.themeCard}
+            onPress={() => navigation.navigate('Travel', { theme: theme.name, destinations: theme.destinations })}
+          >
             <Image source={theme.imageSource} style={styles.themeImage} />
             <Text style={styles.themeText}>{theme.name}</Text>
           </TouchableOpacity>
